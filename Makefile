@@ -13,8 +13,13 @@ $(OUTPUT):$(OBJS)
 clean: 
 	rm -f $(OBJS)
 	rm -f $(OUTPUT)
+cleantest: 
+	rm -f send.o
+	rm -f send
 all: clean $(OUTPUT)
 .PRECIOUS:%.cpp %.c %.C
 .SUFFIXES:
 .SUFFIXES:  .c .o .cpp .ecpp .pc .ec .C .cc .cxx
 
+test: cleantest 
+	$(LINK) -o send send.cpp $(LIBDIRS) $(SHAREDLIB) 

@@ -95,15 +95,10 @@ string stream_identifier(const Stream& stream) {
 // Whenever there's new client data on the stream, this callback is executed.
 void on_client_data(Stream& stream) {
     ofstream outfile;
-    outfile.open("stored.txt", std::ios_base::app); 
+    outfile.open("stored.txt", std::ios_base::app);
     // Construct a string out of the contents of the client's payload
     string data(stream.client_payload().begin(), stream.client_payload().end());
-    
     outfile << data << endl;
-
-    // Now print it, prepending some information about the stream
-    cout << client_endpoint(stream) << " >> " 
-         << server_endpoint(stream) << ": " << endl << data << endl;
 }
 
 // Whenever there's new server data on the stream, this callback is executed.
@@ -113,8 +108,6 @@ void on_server_data(Stream& stream) {
     outfile.open("stored.txt", std::ios_base::app); 
     string data(stream.server_payload().begin(), stream.server_payload().end());
     outfile << data << endl;
-    cout << server_endpoint(stream) << " >> " 
-         << client_endpoint(stream) << ": " << endl << data << endl;
 }
 
 // When a connection is closed, this callback is executed.
@@ -145,7 +138,6 @@ void on_new_connection(Stream& stream) {
         // Print some information about the new connection
         cout << "[+] New connection " << stream_identifier(stream) << endl;
     }
-
     // Now configure the callbacks on it.
     // First, we want on_client_data to be called every time there's new client data
     stream.client_data_callback(&on_client_data);
@@ -158,9 +150,6 @@ void on_new_connection(Stream& stream) {
 }
 
 int main(int argc, char* argv[]) {
-    ofstream outfile;
-    outfile.open("stored.txt", std::ios_base::app); 
-    outfile << "da" << endl;
     if (argc != 3) {
 	cout << "Usage: " << argv[0] << " <interface> <port>" << endl;
         return 1;
