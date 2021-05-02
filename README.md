@@ -10,10 +10,10 @@
     
     執行 "question2.sh 檔案名 關鍵字 取代字串" 
     example:
-        root@:~/Sniffing/Almazing# cat test
+        root@:~/Almazing# cat test
         hello world helloword
         helloeverone
-        root@:~/Sniffing/Almazing# ./question2.sh test he hi
+        root@:~/Almazing# ./question2.sh test he hi
         the quantity replaced is 3
         hillo world hilloword
         hilloeverone
