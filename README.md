@@ -1,4 +1,4 @@
-# Almazing
+# Aimazing
 建置環境: Yocto zeus Linux 5.6 
 
 問題一:
